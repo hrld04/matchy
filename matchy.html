@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Matchy Matchy!</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='matchy.css'>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src='matchy.js'></script>
+    <script>
+        $(document).ready(function(){ 
+            let flag = 0;
+            let image = "initial";         
+            $("img").click(function(){  
+                
+                console.log("image " + image);
+                //console.log('data-alt-src value is', $(this).attr('data-alt-src'));    
+                let attrImage = $(this).attr("data-alt-src");  
+                console.log("attrImage " + attrImage);
+                if(attrImage == image){
+                    $(this).attr("src", attrImage);
+                }
+                else{
+                    $(this).attr("src", "question.jpg");
+                    flag = 0;
+                } 
+
+                if(flag == 0){
+                    $(this).attr("src", $(this).attr("data-alt-src")); 
+                }
+                image = $(this).attr("data-alt-src");   
+                flag = 1;            
+            })
+
+                        
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src='question.jpg' data-alt-src='ball.jpg'/>
+        <img src='question.jpg' data-alt-src='soccer.jpg'/>  
+        <img src='question.jpg' data-alt-src='volleybal.jpeg'/>  
+        <img src='question.jpg' data-alt-src='ball.jpg'/>
+        <img src='question.jpg' data-alt-src='volleybal.jpeg'/>
+        <img src='question.jpg' data-alt-src='ball.jpg'/>  
+        <img src='question.jpg' data-alt-src='soccer.jpg'/>  
+        <img src='question.jpg' data-alt-src='volleybal.jpeg'/>  
+        <img src='question.jpg' data-alt-src='soccer.jpg'/>
+        <img src='question.jpg' data-alt-src='ball.jpg'/>  
+        <img src='question.jpg' data-alt-src='volleybal.jpeg'/>  
+        <img src='question.jpg' data-alt-src='soccer.jpg'/>                
+    </div>
+    
+</html>
