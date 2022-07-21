@@ -10,30 +10,30 @@
     <script src='matchy.js'></script>
     <script>
         $(document).ready(function(){ 
-            let flag = 0;
-            let image = "initial";         
-            $("img").click(function(){  
-                
-                console.log("image " + image);
-                //console.log('data-alt-src value is', $(this).attr('data-alt-src'));    
-                let attrImage = $(this).attr("data-alt-src");  
-                console.log("attrImage " + attrImage);
-                if(attrImage == image){
-                    $(this).attr("src", attrImage);
+
+            let firstImage = ''; 
+            let firstSelect = ''; 
+            let flag = 0; 
+            $("img").click(function(){
+                if(flag!= 0){
+                    if(firstImage == $(this).attr('data-alt-src')){
+                        let image = firstSelect.attr('data-alt-src'); 
+                        firstSelect.attr('src', image);
+                        $(this).attr("src", $(this).attr('data-alt-src')); 
+                        flag = 0; 
+                    }
+                    else{
+                        firstSelect.attr('src', 'question.jpg');
+                        $(this).attr("src", $(this).attr('data-alt-src'));
+                    }
                 }
                 else{
-                    $(this).attr("src", "question.jpg");
-                    flag = 0;
-                } 
-
-                if(flag == 0){
-                    $(this).attr("src", $(this).attr("data-alt-src")); 
+                    $(this).attr("src", $(this).attr('data-alt-src'));
+                    flag = 1; 
                 }
-                image = $(this).attr("data-alt-src");   
-                flag = 1;            
-            })
-
-                        
+                firstImage = $(this).attr('data-alt-src'); 
+                firstSelect = $(this); 
+            })            
         })
     </script>
 </head>
